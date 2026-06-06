@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A-1 Peshawari Chapli Kabab & BBQ in Karachi. Order authentic chapli kabab, BBQ, karahi, reserve tables, and track orders online." />
+  <meta name="keywords" content="A-1 Peshawari, Chapli Kabab Karachi, BBQ Karachi, online food order, Shah Faisal Colony restaurant" />
+  <meta name="theme-color" content="##0a0705" />
+  <meta property="og:title" content="A-1 Peshawari Chapli Kabab & BBQ" />
+  <meta property="og:description" content="Authentic Peshawari flavours since 1984. Order online, reserve tables, and explore the menu." />
+  <meta property="og:type" content="restaurant.restaurant" />
+  <title>A-1 Peshawari Chapli Kabab & BBQ | Online Ordering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Restaurant",
+    "name":"A-1 Peshawari Chapli Kabab & BBQ",
+    "servesCuisine":["Pakistani","Peshawari","BBQ"],
+    "address":{"@type":"PostalAddress","streetAddress":"Shah Faisal Colony","addressLocality":"Karachi","addressRegion":"Sindh","addressCountry":"PK"},
+    "telephone":"+923211124404",
+    "priceRange":"PKR 200-5000",
+    "acceptsReservations":true,
+    "hasMenu":"#menu"
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0a0705;
+      --bg2: #110d09;
+      --panel: #181008;
+      --line: rgba(210,165,80,.15);
+      --line2: rgba(210,165,80,.28);
+      --text: #f5ede0;
+      --muted: #a89880;
+      --soft: #6a5e52;
+      --red: #b8181c;
+      --red2: #e02a30;
+      --gold: #c9a04a;
+      --gold2: #e8c870;
+      --cream: #f0e0c0;
+      --green: #2eac6c;
+      --shadow: 0 32px 80px rgba(0,0,0,.55);
+      --shadow-sm: 0 8px 32px rgba(0,0,0,.35);
+      --r: 10px;
+      --nav: 80px;
+      --ease: cubic-bezier(.22,1,.36,1);
+      --section-gap: 130px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body.drawer-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1200px, calc(100% - 48px)); margin: auto; }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--gold); font-size: .7rem; font-weight: 700;
+      letter-spacing: .28em; text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: ''; width: 28px; height: 1px; background: var(--gold); opacity: .6;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08; margin: .5rem 0 1.2rem; font-weight: 700;
+    }
+    .lead {
+      color: var(--muted); max-width: 600px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; line-height: 1.7;
+    }
+
+    /* ── LAYOUT ── */
+    .section {
+      padding: var(--section-gap) 0;
+      position: relative;
+    }
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+    .section::before {
+      content: '';
+      position: absolute; inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,160,74,.22), transparent);
+    }
+    .grid { display: grid; gap: 24px; }
+
+    /* ── PILL / TAG ── */
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--line2); background: rgba(201,160,74,.06);
+      border-radius: 999px; padding: 8px 16px;
+      color: var(--muted); font-size: .83rem; font-weight: 500;
+    }
+    .tag {
+      color: var(--gold); font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .12em;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      border: 0; border-radius: var(--r);
+      padding: 14px 22px;
+      background: var(--red); color: white;
+      font-weight: 700; font-size: .92rem;
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      transition: all .28s var(--ease);
+      min-height: 48px; letter-spacing: .02em;
+    }
+    .btn:hover { background: var(--red2); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(184,24,28,.35); }
+
+    /* PRIMARY CTA — large, glowing */
+    .btn.cta {
+      min-height: 62px; padding: 18px 36px;
+      font-size: 1rem; font-weight: 700;
+      background: linear-gradient(135deg, #c8181d, #e02a30);
+      box-shadow: 0 0 0 1px rgba(232,80,80,.25), 0 20px 50px rgba(184,24,28,.45);
+      border-radius: 12px;
+      position: relative; overflow: hidden;
+    }
+    .btn.cta::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+      transform: translateX(-100%);
+      transition: transform .55s var(--ease);
+    }
+    .btn.cta:hover::after { transform: translateX(100%); }
+    .btn.cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 0 1px rgba(232,80,80,.35), 0 28px 64px rgba(184,24,28,.52);
+    }
+
+    /* GHOST CTA */
+    .btn.ghost {
+      background: transparent;
+      border: 1.5px solid var(--line2);
+      color: var(--gold2);
+      min-height: 62px; padding: 18px 36px;
+      font-size: 1rem; border-radius: 12px;
+    }
+    .btn.ghost:hover { background: rgba(201,160,74,.08); transform: translateY(-3px); box-shadow: none; }
+
+    .btn.alt { background: transparent; color: var(--gold); border: 1px solid var(--line2); }
+    .btn.alt:hover { background: rgba(201,160,74,.08); transform: translateY(-2px); box-shadow: none; }
+    .btn.dark { background: rgba(255,255,255,.06); color: var(--text); border: 1px solid var(--line); }
+    .btn.dark:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); box-shadow: none; }
+    .btn.small { padding: 9px 14px; min-height: 38px; font-size: .84rem; border-radius: 8px; }
+    .icon-btn {
+      width: 46px; height: 46px; border-radius: var(--r);
+      border: 1px solid var(--line); background: rgba(255,255,255,.04);
+      color: var(--text); display: grid; place-items: center;
+      font-size: .78rem; font-weight: 700;
+    }
+    .icon-btn:hover { background: rgba(255,255,255,.08); }
+
+    /* ── CARD ── */
+    .card {
+      background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    nav {
+      height: var(--nav); position: fixed; inset: 0 0 auto;
+      z-index: 30;
+      background: rgba(10,7,5,.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      transition: border-color .3s;
+    }
+    .nav-inner {
+      height: 100%; display: flex;
+      align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .mark {
+      width: 46px; height: 46px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: radial-gradient(circle at 35% 30%, #f5ce76, #a40f1d 58%, #35100c);
+      font-family: 'Cinzel', serif; font-weight: 800; font-size: 1rem;
+      box-shadow: 0 4px 16px rgba(185,24,28,.4);
+    }
+    .brand strong { font-family: 'Cinzel', serif; font-size: .95rem; letter-spacing: .04em; }
+    .brand span { display: block; color: var(--gold); font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .14em; color: var(--muted);
+      transition: color .2s; padding: 4px 0; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 1px; background: var(--gold); transition: width .25s var(--ease);
+    }
+    .nav-links a:hover { color: var(--gold2); }
+    .nav-links a:hover::after { width: 100%; }
+    .mobile-toggle { display: none; }
+    .cart-fab { position: relative; }
+    .cart-count {
+      position: absolute; right: -6px; top: -6px;
+      background: var(--red2); color: white;
+      border-radius: 999px; min-width: 20px; height: 20px;
+      display: grid; place-items: center;
+      font-size: .7rem; font-weight: 800;
+    }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      min-height: 96svh;
+      padding: calc(var(--nav) + 80px) 0 100px;
+      display: grid; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(105deg, rgba(10,7,5,.97) 0%, rgba(10,7,5,.75) 55%, rgba(10,7,5,.18) 100%),
+        url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1800&q=80') center/cover;
+      filter: saturate(1.1) contrast(1.05);
+    }
+    /* Animated ember particles */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(185,30,30,.12), transparent),
+        radial-gradient(ellipse 30% 30% at 80% 20%, rgba(201,160,74,.08), transparent);
+    }
+    .hero-fade {
+      position: absolute; inset: auto 0 0;
+      height: 200px;
+      background: linear-gradient(transparent, var(--bg));
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow span {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(201,160,74,.35); background: rgba(201,160,74,.08);
+      border-radius: 999px; padding: 9px 18px;
+      color: var(--gold2); font-size: .78rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(46,172,108,.5); } 50% { opacity: .8; box-shadow: 0 0 0 5px rgba(46,172,108,0); } }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 7.5vw, 6.8rem);
+      line-height: .94; margin: 0 0 28px; font-weight: 800;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+
+    .hero-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.22rem; color: var(--muted);
+      line-height: 1.7; max-width: 520px; margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+      margin-bottom: 56px;
+    }
+
+    /* Stats strip */
+    .hero-stats {
+      display: flex; gap: 0; border: 1px solid var(--line);
+      border-radius: 14px; overflow: hidden; background: rgba(0,0,0,.28);
+      backdrop-filter: blur(12px);
+      width: fit-content;
+    }
+    .stat {
+      padding: 18px 28px; text-align: center;
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child { border-right: 0; }
+    .stat b { display: block; font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold2); font-weight: 700; }
+    .stat small { color: var(--muted); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; }
+
+    /* ══════════════════════════════
+       FOOD MARQUEE STRIP
+    ══════════════════════════════ */
+    .marquee-section {
+      background: #06040300;
+      padding: 0; overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      position: relative; flex-shrink: 0;
+      width: 340px; height: 240px;
+      overflow: hidden;
+    }
+    .marquee-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s var(--ease);
+    }
+    .marquee-item:hover img { transform: scale(1.06); }
+    .marquee-item::after {
+      content: attr(data-label);
+      position: absolute; left: 16px; bottom: 14px;
+      color: white; font-weight: 800; font-size: .9rem;
+      background: rgba(0,0,0,.5);
+      padding: 6px 12px; border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+    .marquee-item::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.45));
+      z-index: 1;
+      pointer-events: none;
+    }
+    .marquee-item::after { z-index: 2; }
+
+    /* ══════════════════════════════
+       FEATURE BAR (3 cards, no 4th)
+    ══════════════════════════════ */
+    .feature-section {
+      padding: 80px 0;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature {
+      padding: 32px 28px;
+      border-radius: 14px;
+      background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      position: relative; overflow: hidden;
+    }
+    .feature::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .feature:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 48px; height: 48px;
+      background: rgba(201,160,74,.1); border: 1px solid rgba(201,160,74,.2);
+      border-radius: 12px; display: grid; place-items: center;
+      font-size: 1.3rem; margin-bottom: 18px;
+    }
+    .feature b { display: block; margin-bottom: 8px; font-size: 1rem; }
+    .feature p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+
+    /* ══════════════════════════════
+       MENU
+    ══════════════════════════════ */
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 36px 0 40px; }
+    .tab {
+      border: 1px solid var(--line); background: rgba(255,255,255,.04);
+      color: var(--muted); border-radius: 999px;
+      padding: 10px 20px; font-weight: 600; font-size: .84rem;
+      transition: all .2s; cursor: pointer;
+    }
+    .tab:hover { border-color: var(--line2); color: var(--text); }
+    .tab.active { background: var(--gold); color: #110a02; border-color: var(--gold); font-weight: 700; }
+
+    .menu-grid { grid-template-columns: repeat(3, 1fr); }
+    .menu-card { overflow: hidden; border-radius: 14px; }
+    .food-img {
+      height: 220px; background-size: cover; background-position: center;
+      position: relative;
+      transition: transform .6s var(--ease);
+    }
+    .menu-card:hover .food-img { transform: scale(1.05); }
+    .food-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(transparent 45%, rgba(0,0,0,.6));
+    }
+    .menu-body { padding: 22px; }
+    .menu-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+    .menu-top h3 { margin: 0 0 6px; font-family: 'Cinzel', serif; font-size: 1rem; }
+    .price { color: var(--gold); font-weight: 800; font-size: 1.05rem; white-space: nowrap; }
+    .menu-card p { color: var(--muted); font-size: .88rem; line-height: 1.55; margin: 8px 0 16px; }
+    .menu-actions { display: flex; align-items: center; justify-content: space-between; }
+
+    /* ══════════════════════════════
+       ABOUT
+    ══════════════════════════════ */
+    .split { grid-template-columns: 1fr 1fr; align-items: center; }
+    .about-photo {
+      min-height: 560px;
+      background: url('https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=1100&q=80') center/cover;
+      border-radius: 16px; border: 1px solid var(--line);
+      position: relative;
+    }
+    .about-photo .badge {
+      position: absolute; right: 20px; bottom: 20px;
+      background: rgba(10,7,5,.88); border: 1px solid var(--line2);
+      border-radius: 12px; padding: 20px 24px;
+      backdrop-filter: blur(12px);
+    }
+    .about-photo b { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2.4rem; display: block; }
+    .about-photo span { color: var(--muted); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
+
+    .about-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 30px; }
+
+    /* ══════════════════════════════
+       GALLERY
+    ══════════════════════════════ */
+    .gallery-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 260px;
+    }
+    .gallery-item {
+      background-size: cover; background-position: center;
+      border-radius: 12px; border: 1px solid var(--line);
+      position: relative; overflow: hidden;
+      transition: transform .4s var(--ease), filter .4s;
+    }
+    .gallery-item:hover { transform: translateY(-6px); filter: saturate(1.15); }
+    .gallery-item:nth-child(1) { grid-column: span 2; }
+    .gallery-item:nth-child(5) { grid-column: span 2; }
+    .gallery-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(transparent 40%, rgba(0,0,0,.58));
+    }
+    .gallery-item span {
+      position: absolute; left: 16px; bottom: 16px; z-index: 1;
+      font-weight: 800; font-size: .9rem; color: white;
+      background: rgba(0,0,0,.45); padding: 6px 12px; border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ══════════════════════════════
+       DEALS
+    ══════════════════════════════ */
+    .deal-grid { grid-template-columns: repeat(3, 1fr); }
+    .deal { padding: 30px 28px; border-radius: 14px; }
+    .deal h3 { margin: 14px 0 8px; font-family: 'Cinzel', serif; font-size: 1.1rem; }
+    .deal p { color: var(--muted); font-size: .92rem; margin: 0; line-height: 1.6; }
+    .deal code {
+      color: #0f0800; background: var(--gold);
+      padding: 4px 10px; border-radius: 6px;
+      font-weight: 900; font-size: .85rem;
+    }
+    .deal-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(201,160,74,.12); border: 1px solid rgba(201,160,74,.2);
+      display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 14px;
+    }
+
+    /* ══════════════════════════════
+       FORMS (Reserve + Contact)
+    ══════════════════════════════ */
+    .forms { grid-template-columns: 1fr 1fr; }
+    .form { padding: 32px; border-radius: 16px; }
+    .field { display: grid; gap: 7px; margin-bottom: 16px; }
+    .field label {
+      font-size: .72rem; color: var(--gold); font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+    }
+    .field input, .field select, .field textarea {
+      width: 100%; border: 1px solid var(--line);
+      background: rgba(0,0,0,.28); color: var(--text);
+      border-radius: 8px; padding: 13px 14px;
+      transition: border-color .2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: rgba(201,160,74,.5);
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .contact-list { display: grid; gap: 14px; margin-bottom: 24px; }
+    .contact-list > div { padding: 20px; border-radius: 12px; }
+    .contact-list b { display: block; color: var(--gold); margin-bottom: 4px; }
+    .seat-info { padding: 16px; border-radius: 10px; background: rgba(46,172,108,.08); border: 1px solid rgba(46,172,108,.2); }
+
+    /* ══════════════════════════════
+       DRAWERS (Cart, Track)
+    ══════════════════════════════ */
+    .drawer { position: fixed; inset: 0; z-index: 60; display: none; }
+    .drawer.open { display: block; }
+    .shade { position: absolute; inset: 0; background: rgba(0,0,0,.65); backdrop-filter: blur(2px); }
+    .panel {
+      position: absolute; right: 0; top: 0; height: 100%;
+      width: min(500px, 100%);
+      background: #120d09; border-left: 1px solid var(--line);
+      padding: 24px; overflow: auto; box-shadow: var(--shadow);
+    }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+    .panel-head h2 { margin: 0; font-family: 'Cinzel', serif; font-size: 1.2rem; }
+    .cart-line { display: grid; grid-template-columns: 1fr auto; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.07); padding: 14px 0; }
+    .qty { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .qty button { min-width: 30px; height: 30px; border: 1px solid var(--line); background: transparent; color: var(--text); border-radius: 7px; font-weight: 700; }
+    .qty button:hover { background: rgba(255,255,255,.08); }
+    .totals { margin: 20px 0; border-top: 1px solid var(--line); padding-top: 16px; }
+    .totals div { display: flex; justify-content: space-between; margin: 8px 0; font-size: .9rem; }
+    .order-status { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 14px 0; }
+    .step { height: 6px; background: #2b2018; border-radius: 999px; }
+    .step.on { background: var(--green); }
+
+    /* ══════════════════════════════
+       CHAT WIDGET
+    ══════════════════════════════ */
+    .chat { position: fixed; right: 20px; bottom: 20px; z-index: 45; }
+    .chat-box {
+      display: none; width: min(360px, calc(100vw - 32px));
+      background: #120d09; border: 1px solid var(--line);
+      border-radius: 16px; box-shadow: var(--shadow); overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .chat-box.open { display: block; }
+    .chat-header { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .chat-log { height: 270px; overflow: auto; padding: 14px; }
+    .msg { padding: 10px 14px; border-radius: 10px; margin: 8px 0; max-width: 88%; background: rgba(255,255,255,.05); color: var(--muted); font-size: .88rem; }
+    .msg.me { margin-left: auto; background: var(--red); color: white; }
+    .chat-input { display: flex; border-top: 1px solid var(--line); }
+    .chat-input input { flex: 1; background: transparent; border: 0; color: var(--text); padding: 13px; }
+    .chat-toggle-btn {
+      border: 0; border-radius: 999px;
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #c8181d, #e02a30);
+      color: white; display: grid; place-items: center;
+      box-shadow: 0 8px 28px rgba(184,24,28,.45);
+      font-size: 1.3rem; cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .chat-toggle-btn:hover { transform: scale(1.08); box-shadow: 0 12px 36px rgba(184,24,28,.55); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; left: 50%; bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0; background: #1d150e; color: var(--text);
+      border: 1px solid var(--line2); border-radius: 10px;
+      padding: 13px 20px; z-index: 80;
+      transition: all .28s var(--ease);
+      font-weight: 600; font-size: .88rem;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: flex-end; }
+    .footer-brand b { font-family: 'Cinzel', serif; display: block; margin-bottom: 6px; }
+    .footer-brand p { color: var(--muted); font-size: .86rem; margin: 0; }
+    .footer-right { color: var(--soft); font-size: .8rem; text-align: right; }
+
+    /* ══════════════════════════════
+       ADMIN (hidden — ?admin=1 only)
+    ══════════════════════════════ */
+    .admin-shell { display: none; }
+    .admin-shell.open { display: block; }
+    .admin-grid { grid-template-columns: 240px 1fr; align-items: start; }
+    .side { padding: 16px; position: sticky; top: 92px; }
+    .side button { width: 100%; justify-content: flex-start; margin-bottom: 8px; }
+    .admin-view { display: none; }
+    .admin-view.active { display: block; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255,255,255,.07); vertical-align: top; font-size: .88rem; }
+    .table th { color: var(--gold); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; }
+    .metric-grid { grid-template-columns: repeat(4, 1fr); }
+    .metric { padding: 20px; border-radius: 12px; }
+    .metric b { display: block; color: var(--gold); font-size: 1.8rem; font-family: 'Cinzel', serif; margin-bottom: 4px; }
+    .metric small { color: var(--muted); font-size: .8rem; }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: grid; }
+      .nav-links.open {
+        position: fixed; top: var(--nav); left: 0; right: 0;
+        display: grid; background: #120d09;
+        padding: 24px; border-bottom: 1px solid var(--line);
+        gap: 8px;
+      }
+      .nav-links.open a { font-size: .88rem; padding: 10px 0; border-bottom: 1px solid var(--line); }
+      .feature-grid, .menu-grid, .gallery-grid, .deal-grid, .forms, .split, .admin-grid, .metric-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .admin-grid { display: block; }
+      .side { position: static; margin-bottom: 16px; }
+      .gallery-item:nth-child(n) { grid-column: auto; }
+      .about-photo { min-height: 380px; }
+    }
+    @media (max-width: 640px) {
+      :root { --nav: 68px; --section-gap: 80px; }
+      .wrap { width: calc(100% - 32px); }
+      .feature-grid, .menu-grid, .gallery-grid, .deal-grid, .forms, .split, .metric-grid, .two, .hero-stats, .strip-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-actions .btn { width: 100%; }
+      .hero h1 { font-size: clamp(2.4rem, 10vw, 3.2rem); }
+      .food-img { height: 190px; }
+      .table th, .table td { padding: 9px; font-size: .8rem; }
+      .order-status { grid-template-columns: repeat(4, 1fr); }
+      .stat { padding: 14px 18px; }
+      .marquee-item { width: 240px; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">
+        <div class="mark">A1</div>
+        <div><strong>A-1 Peshawari</strong><span>Since 1984</span></div>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reserve">Reserve</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="icon-btn mobile-toggle" id="navToggle" aria-label="Open menu">☰</button>
+        <button class="icon-btn cart-fab" onclick="openCart()" aria-label="Open cart">
+          🛒<span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-fade"></div>
+      <div class="wrap hero-content">
+
+        <div class="hero-eyebrow">
+          <span><span class="dot"></span>Open Now · Shah Faisal Colony, Karachi</span>
+        </div>
+
+        <h1>A-1 Peshawari<br><em>Chapli Kabab</em><br>& BBQ</h1>
+
+        <p class="hero-desc">Charcoal BBQ, hand-pressed kababs, slow-cooked karahi — four decades of authentic Peshawari flavour.</p>
+
+        <div class="hero-actions">
+          <a class="btn cta" href="#menu">🍽 Order Online</a>
+          <a class="btn ghost" href="#reserve">Reserve a Table</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><b>40+</b><small>Years legacy</small></div>
+          <div class="stat"><b>4.8★</b><small>Guest rating</small></div>
+          <div class="stat"><b>25+</b><small>Menu items</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE FOOD STRIP -->
+    <div class="marquee-section">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+
+    <!-- FEATURE BAR -->
+    <div class="feature-section">
+      <div class="wrap feature-grid">
+        <div class="feature">
+          <div class="feature-icon">🛵</div>
+          <b>Delivery & Pickup</b>
+          <p>Freshly packed meals to your door, or quick pickup. COD, JazzCash, Easypaisa accepted.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">👨‍👩‍👧</div>
+          <b>Family Reservations</b>
+          <p>Reserve your seats before you arrive. Family hall, outdoor, and ground floor seating.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <b>WhatsApp Support</b>
+          <p>Confirm orders and reservations directly on WhatsApp for instant communication.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+      <div class="wrap">
+        <span class="eyebrow">Online Menu</span>
+        <h2 class="section-title">Order Signature Dishes</h2>
+        <p class="lead">Use code <b style="color:var(--gold2)">A1WELCOME</b> for 8% off your first order.</p>
+        <div class="filters" id="filters"></div>
+        <div class="menu-grid grid" id="menuGrid"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="wrap split grid">
+        <div class="about-photo anim">
+          <div class="badge">
+            <b>1984</b>
+            <span>Original Peshawari taste</span>
+          </div>
+        </div>
+        <div class="anim">
+          <span class="eyebrow">About Us</span>
+          <h2 class="section-title">A Karachi classic for four decades.</h2>
+          <p class="lead">A-1 Peshawari brings traditional chapli kabab, BBQ, karahi, nihari, and warm family dining to Shah Faisal Colony. The same old-school hospitality, now with a modern online counter.</p>
+          <div class="about-pills">
+            <span class="pill">Fresh daily meat</span>
+            <span class="pill">Family seating</span>
+            <span class="pill">Catering orders</span>
+            <span class="pill">WhatsApp support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <span class="eyebrow">Gallery</span>
+        <h2 class="section-title">Food, Fire, Family</h2>
+        <div class="gallery-grid grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- DEALS -->
+    <section class="section">
+      <div class="wrap">
+        <span class="eyebrow">Offers</span>
+        <h2 class="section-title">Deals & Loyalty</h2>
+        <div class="deal-grid grid">
+          <div class="deal card">
+            <div class="deal-icon">🔥</div>
+            <span class="pill" style="margin-bottom:4px">10% off BBQ</span>
+            <h3>BBQ Night</h3>
+            <p>Use code <code>BBQ10</code> on any BBQ item.</p>
+          </div>
+          <div class="deal card">
+            <div class="deal-icon">👨‍👩‍👧‍👦</div>
+            <span class="pill" style="margin-bottom:4px">15% off above PKR 3,000</span>
+            <h3>Family Feast</h3>
+            <p>Use code <code>FAMILY15</code> for family orders above PKR 3,000.</p>
+          </div>
+          <div class="deal card">
+            <div class="deal-icon">⭐</div>
+            <span class="pill" style="margin-bottom:4px">Points Program</span>
+            <h3>Loyalty Rewards</h3>
+            <p>Earn 1 point per PKR 100 spent. Redeem for discounts on future orders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVE -->
+    <section class="section" id="reserve">
+      <div class="wrap forms grid">
+        <div>
+          <span class="eyebrow">Reservations</span>
+          <h2 class="section-title">Book Your Table</h2>
+          <p class="lead">Choose date, time, and seats. A WhatsApp confirmation will be sent to the restaurant.</p>
+          <div class="contact-list" style="margin-top:28px">
+            <div class="card seat-info"><b>Seat Availability</b><span id="seatHint">Pick a date and time to check availability.</span></div>
+            <div class="card" style="padding:20px"><b>WhatsApp Confirmation</b><span style="color:var(--muted);font-size:.88rem;display:block;margin-top:4px">After booking, your reservation details are sent directly via WhatsApp.</span></div>
+          </div>
+        </div>
+        <form class="form card" id="reservationForm">
+          <div class="two">
+            <div class="field"><label>Name</label><input id="rName" required placeholder="Your name"></div>
+            <div class="field"><label>Phone</label><input id="rPhone" required placeholder="+92 3xx xxxxxxx"></div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Date</label><input id="rDate" type="date" required></div>
+            <div class="field"><label>Time</label><input id="rTime" type="time" required></div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Seats</label>
+              <select id="rSeats"><option>2</option><option>4</option><option>6</option><option>8</option><option>10</option></select>
+            </div>
+            <div class="field"><label>Area</label>
+              <select id="rArea"><option>Family Hall</option><option>Outdoor</option><option>Ground Floor</option></select>
+            </div>
+          </div>
+          <button class="btn cta" type="submit" style="width:100%;margin-top:8px">Confirm Booking</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="wrap forms grid">
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h2 class="section-title">Visit or Message Us</h2>
+          <div class="contact-list">
+            <div class="card" style="padding:20px"><b>Location</b><span style="color:var(--muted);display:block;margin-top:4px">Shah Faisal Colony, Karachi, Sindh</span></div>
+            <div class="card" style="padding:20px"><b>Phone / WhatsApp</b><a href="tel:+923211124404" style="color:var(--gold2);display:block;margin-top:4px">+92 321 1124404</a></div>
+            <div class="card" style="padding:20px"><b>Hours</b><span style="color:var(--muted);display:block;margin-top:4px">Mon–Thu 12 PM–1 AM &nbsp;|&nbsp; Fri 1:30 PM–2 AM<br>Sat–Sun 11 AM–2 AM</span></div>
+          </div>
+        </div>
+        <form class="form card" id="contactForm">
+          <div class="two">
+            <div class="field"><label>Name</label><input id="cName" required placeholder="Your name"></div>
+            <div class="field"><label>Phone</label><input id="cPhone" placeholder="+92 3xx xxxxxxx"></div>
+          </div>
+          <div class="field"><label>Email</label><input id="cEmail" type="email" placeholder="your@email.com"></div>
+          <div class="field"><label>Message</label><textarea id="cMessage" required placeholder="How can we help?"></textarea></div>
+          <button class="btn cta" type="submit" style="width:100%">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ADMIN (hidden — access via ?admin=1) -->
+    <section class="section" id="admin" hidden>
+      <div class="wrap">
+        <span class="eyebrow">Admin Dashboard</span>
+        <h2 class="section-title">Restaurant Control Room</h2>
+        <div id="loginBox" class="form card" style="max-width:420px">
+          <p class="lead" style="margin-bottom:20px">Restaurant staff access only.</p>
+          <div class="field"><label>Username</label><input id="adminUser" placeholder="admin"></div>
+          <div class="field"><label>Password</label><input id="adminPass" type="password" placeholder="••••••"></div>
+          <button class="btn" onclick="adminLogin()" style="width:100%;margin-top:8px">Login</button>
+        </div>
+        <div class="admin-shell" id="adminShell">
+          <div class="admin-grid grid">
+            <aside class="side card">
+              <button class="btn dark" onclick="showAdmin('analytics')">📊 Analytics</button>
+              <button class="btn dark" onclick="showAdmin('orders')">📋 Orders</button>
+              <button class="btn dark" onclick="showAdmin('menuAdmin')">🍽 Menu</button>
+              <button class="btn dark" onclick="showAdmin('reservations')">📅 Reservations</button>
+              <button class="btn dark" onclick="showAdmin('customers')">👥 Customers</button>
+              <button class="btn alt" onclick="adminLogout()">Logout</button>
+            </aside>
+            <div>
+              <section class="admin-view active" id="analytics"></section>
+              <section class="admin-view" id="orders"></section>
+              <section class="admin-view" id="menuAdmin"></section>
+              <section class="admin-view" id="reservations"></section>
+              <section class="admin-view" id="customers"></section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <b>A-1 Peshawari Chapli Kabab & BBQ</b>
+        <p>Authentic Peshawari flavours since 1984 · Shah Faisal Colony, Karachi</p>
+      </div>
+      <div class="footer-right">
+        <a href="tel:+923211124404" style="color:var(--gold);display:block;margin-bottom:6px">+92 321 1124404</a>
+        <span>© 2025 A-1 Peshawari</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="drawer" id="cartDrawer">
+    <div class="shade" onclick="closeCart()"></div>
+    <aside class="panel">
+      <div class="panel-head">
+        <h2>Your Cart</h2>
+        <button class="icon-btn" onclick="closeCart()">✕</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="totals" id="cartTotals"></div>
+      <form id="checkoutForm">
+        <div class="two">
+          <div class="field"><label>Name</label><input id="oName" required></div>
+          <div class="field"><label>Phone</label><input id="oPhone" required></div>
+        </div>
+        <div class="field"><label>Delivery or Pickup</label>
+          <select id="oType"><option>Delivery</option><option>Pickup</option></select>
+        </div>
+        <div class="field"><label>Address / Pickup note</label><textarea id="oAddress" required></textarea></div>
+        <div class="two">
+          <div class="field"><label>Payment</label>
+            <select id="oPayment"><option>COD</option><option>JazzCash</option><option>Easypaisa</option><option>Debit/Credit Card</option></select>
+          </div>
+          <div class="field"><label>Discount code</label><input id="oCode" placeholder="A1WELCOME"></div>
+        </div>
+        <button class="btn cta" type="submit" style="width:100%;margin-bottom:10px">Place Order</button>
+        <button class="btn alt" type="button" onclick="sendCartWhatsApp()" style="width:100%">📲 Send Cart via WhatsApp</button>
+      </form>
+      <div id="lastOrder"></div>
+    </aside>
+  </div>
+
+  <!-- TRACK DRAWER -->
+  <div class="drawer" id="trackDrawer">
+    <div class="shade" onclick="closeTracker()"></div>
+    <aside class="panel">
+      <div class="panel-head">
+        <h2>Track Order</h2>
+        <button class="icon-btn" onclick="closeTracker()">✕</button>
+      </div>
+      <div class="field"><label>Order ID</label><input id="trackId" placeholder="A1-0001"></div>
+      <button class="btn" onclick="trackOrder()" style="width:100%">Check Status</button>
+      <div id="trackResult" style="margin-top:20px"></div>
+    </aside>
+  </div>
+
+  <!-- CHAT -->
+  <div class="chat">
+    <div class="chat-box" id="chatBox">
+      <div class="chat-header">
+        <b style="font-family:'Cinzel',serif;font-size:.95rem">A-1 Assistant</b>
+        <button class="icon-btn" onclick="toggleChat()" style="width:32px;height:32px;font-size:.9rem">✕</button>
+      </div>
+      <div class="chat-log" id="chatLog">
+        <div class="msg">Assalam o alaikum! Ask about our menu, timings, reservations, or delivery.</div>
+      </div>
+      <div class="chat-input">
+        <input id="chatText" placeholder="Type here…">
+        <button class="btn small" onclick="chatSend()">Send</button>
+      </div>
+    </div>
+    <button class="chat-toggle-btn" onclick="toggleChat()" aria-label="Open chat">💬</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+const menuSeed = [
+  {id:1,name:'Peshawari Chapli Kabab',cat:'Kabab',price:360,img:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80',desc:'Hand-pressed beef kabab with tomatoes, coriander, and house spices.'},
+  {id:2,name:'Beef BBQ Platter',cat:'BBQ',price:1450,img:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80',desc:'Seekh kabab, boti, tikka, chutney, raita, and naan.'},
+  {id:3,name:'Mutton Karahi',cat:'Karahi',price:2450,img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=900&q=80',desc:'Tomato, green chilli, ginger, and slow-cooked mutton.'},
+  {id:4,name:'Chicken Karahi',cat:'Karahi',price:1650,img:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=900&q=80',desc:'Classic chicken karahi finished with fresh coriander.'},
+  {id:5,name:'Special Nihari',cat:'Curry',price:520,img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=900&q=80',desc:'Rich slow-cooked beef nihari with ginger and lemon.'},
+  {id:6,name:'Malai Boti',cat:'BBQ',price:780,img:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=900&q=80',desc:'Creamy chicken boti grilled over charcoal.'},
+  {id:7,name:'Katakat Special',cat:'Special',price:990,img:'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',desc:'Traditional tawa katakat with bold masala.'},
+  {id:8,name:'Roghni Naan',cat:'Bread',price:90,img:'https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=900&q=80',desc:'Hot tandoori naan with sesame topping.'},
+  {id:9,name:'Sweet Lassi',cat:'Drinks',price:180,img:'https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=900&q=80',desc:'Cold, thick, house-made lassi.'}
+];
+
+const gallery = [
+  {url:'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=900&q=80',label:'Chapli Kabab'},
+  {url:'https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=900&q=80',label:'BBQ Grill'},
+  {url:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80',label:'Karahi'},
+  {url:'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',label:'Dining'},
+  {url:'https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=900&q=80',label:'Kitchen'},
+  {url:'https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=900&q=80',label:'Family Feast'}
+];
+
+const marqueeImages = [
+  {url:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80',label:'Charcoal BBQ'},
+  {url:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80',label:'Mutton Karahi'},
+  {url:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=800&q=80',label:'Nihari'},
+  {url:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80',label:'Chapli Kabab'},
+  {url:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80',label:'Malai Boti'},
+  {url:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80',label:'Chicken Karahi'},
+];
+
+const discounts = {A1WELCOME:{type:'percent',value:8,min:0},BBQ10:{type:'cat',value:10,cat:'BBQ'},FAMILY15:{type:'percent',value:15,min:3000}};
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const API_BASE = location.protocol === 'file:' ? 'http://localhost:3000' : '';
+
+let menu = JSON.parse(localStorage.a1menu||'null') || menuSeed;
+let cart = JSON.parse(localStorage.a1cart||'[]');
+let orders = JSON.parse(localStorage.a1orders||'[]');
+let reservations = JSON.parse(localStorage.a1reservations||'[]');
+let customers = JSON.parse(localStorage.a1customers||'[]');
+let activeCat = 'All';
+
+function save() {
+  localStorage.a1menu = JSON.stringify(menu);
+  localStorage.a1cart = JSON.stringify(cart);
+  localStorage.a1orders = JSON.stringify(orders);
+  localStorage.a1reservations = JSON.stringify(reservations);
+  localStorage.a1customers = JSON.stringify(customers);
+  syncBackend();
+}
+
+async function api(path, options={}) {
+  const res = await fetch(API_BASE + path, {headers:{'Content-Type':'application/json',...(options.headers||{})},...options});
+  if (!res.ok) throw new Error('API error');
+  return res.json();
+}
+
+let syncTimer;
+function syncBackend() {
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(() => api('/api/state', {method:'POST',body:JSON.stringify({menu,orders,reservations,customers})}).catch(()=>{}), 250);
+}
+
+async function loadBackend() {
+  try {
+    const data = await api('/api/state');
+    menu = data.menu?.length ? data.menu : menu;
+    orders = Array.isArray(data.orders) ? data.orders : orders;
+    reservations = Array.isArray(data.reservations) ? data.reservations : reservations;
+    customers = Array.isArray(data.customers) ? data.customers : customers;
+    localStorage.a1menu = JSON.stringify(menu);
+    localStorage.a1orders = JSON.stringify(orders);
+    localStorage.a1reservations = JSON.stringify(reservations);
+    localStorage.a1customers = JSON.stringify(customers);
+  } catch(e) {}
+}
+
+function money(n) { return 'PKR ' + Math.round(n).toLocaleString(); }
+function toast(t) {
+  const el = $('#toast'); el.textContent = t;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+/* ── MARQUEE ── */
+function buildMarquee() {
+  const doubled = [...marqueeImages, ...marqueeImages];
+  $('#marqueeTrack').innerHTML = doubled.map(i =>
+    `<div class="marquee-item" data-label="${i.label}"><img src="${i.url}" alt="${i.label}" loading="lazy"></div>`
+  ).join('');
+}
+
+/* ── MENU ── */
+function renderFilters() {
+  const cats = ['All', ...new Set(menu.map(i => i.cat))];
+  $('#filters').innerHTML = cats.map(c =>
+    `<button class="tab ${c===activeCat?'active':''}" onclick="activeCat='${c}';renderMenu();renderFilters()">${c}</button>`
+  ).join('');
+}
+
+function renderMenu() {
+  const data = activeCat === 'All' ? menu : menu.filter(i => i.cat === activeCat);
+  $('#menuGrid').innerHTML = data.map(i => `
+    <article class="menu-card card anim">
+      <div class="food-img" style="background-image:url('${i.img}')"></div>
+      <div class="menu-body">
+        <div class="menu-top">
+          <h3>${i.name}</h3>
+          <span class="price">${money(i.price)}</span>
+        </div>
+        <p>${i.desc}</p>
+        <div class="menu-actions">
+          <span class="tag">${i.cat}</span>
+          <button class="btn small" onclick="addToCart(${i.id})">Add to Cart</button>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+function addToCart(id) {
+  const item = menu.find(i => i.id === id);
+  const line = cart.find(i => i.id === id);
+  line ? line.qty++ : cart.push({...item, qty:1});
+  save(); renderCart(); toast(item.name + ' added to cart');
+}
+
+/* ── CART ── */
+function renderCart() {
+  const count = cart.reduce((a,i) => a+i.qty, 0);
+  $('#cartCount').textContent = count;
+  $('#cartItems').innerHTML = cart.length
+    ? cart.map(i => `
+        <div class="cart-line">
+          <div>
+            <b>${i.name}</b><br>
+            <small style="color:var(--muted)">${money(i.price)} × ${i.qty}</small>
+            <div class="qty">
+              <button onclick="qty(${i.id},-1)">−</button>
+              <span>${i.qty}</span>
+              <button onclick="qty(${i.id},1)">+</button>
+              <button onclick="removeItem(${i.id})" style="color:var(--muted);font-size:.78rem">Remove</button>
+            </div>
+          </div>
+          <b style="color:var(--gold)">${money(i.price*i.qty)}</b>
+        </div>`).join('')
+    : '<p style="color:var(--muted);text-align:center;padding:24px 0">Your cart is empty.</p>';
+  const subtotal = cart.reduce((a,i) => a+i.price*i.qty, 0);
+  const tax = subtotal * .05;
+  const delivery = $('#oType')?.value === 'Pickup' ? 0 : 150;
+  $('#cartTotals').innerHTML = `
+    <div><span style="color:var(--muted)">Subtotal</span><b>${money(subtotal)}</b></div>
+    <div><span style="color:var(--muted)">Service tax (5%)</span><b>${money(tax)}</b></div>
+    <div><span style="color:var(--muted)">Delivery</span><b>${money(delivery)}</b></div>
+    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:1rem">
+      <span><b>Total</b></span><b style="color:var(--gold2)">${money(subtotal+tax+delivery)}</b>
+    </div>`;
+}
+
+function qty(id, d) {
+  const line = cart.find(i => i.id === id);
+  if (!line) return;
+  line.qty += d;
+  if (line.qty < 1) cart = cart.filter(i => i.id !== id);
+  save(); renderCart();
+}
+function removeItem(id) { cart = cart.filter(i => i.id !== id); save(); renderCart(); }
+function openCart() { renderCart(); $('#cartDrawer').classList.add('open'); document.body.classList.add('drawer-open'); }
+function closeCart() { $('#cartDrawer').classList.remove('open'); document.body.classList.remove('drawer-open'); }
+
+function calcDiscount(subtotal, code) {
+  const d = discounts[(code||'').trim().toUpperCase()];
+  if (!d) return 0;
+  if (d.type === 'percent' && subtotal >= d.min) return subtotal * d.value / 100;
+  if (d.type === 'cat') return cart.filter(i => i.cat === d.cat).reduce((a,i) => a+i.price*i.qty, 0) * d.value / 100;
+  return 0;
+}
+
+$('#checkoutForm').addEventListener('submit', e => {
+  e.preventDefault();
+  if (!cart.length) return toast('Add items to your cart first');
+  const subtotal = cart.reduce((a,i) => a+i.price*i.qty, 0);
+  const tax = subtotal * .05;
+  const delivery = $('#oType').value === 'Pickup' ? 0 : 150;
+  const discount = calcDiscount(subtotal, $('#oCode').value);
+  const total = subtotal + tax + delivery - discount;
+  const id = 'A1-' + String(orders.length+1).padStart(4,'0');
+  const order = {id, items:cart, date:new Date().toISOString(), customer:$('#oName').value, phone:$('#oPhone').value, type:$('#oType').value, address:$('#oAddress').value, payment:$('#oPayment').value, code:$('#oCode').value.toUpperCase(), subtotal, tax, delivery, discount, total, status:'Pending', points:Math.floor(total/100)};
+  orders.unshift(order);
+  customers.unshift({name:order.customer, phone:order.phone, lastOrder:id, total});
+  cart = []; save(); renderCart(); renderAdmin();
+  $('#lastOrder').innerHTML = `<div class="card" style="padding:18px;margin-top:16px">
+    <b>✅ Order placed: ${id}</b>
+    <p style="color:var(--muted);font-size:.88rem;margin:6px 0 12px">Status: Pending · Points earned: ${order.points}</p>
+    <button class="btn small" onclick="whatsAppOrder('${id}')">📲 WhatsApp Confirmation</button>
+  </div>`;
+  toast('Order placed successfully!');
+});
+
+function sendCartWhatsApp() {
+  const text = cart.map(i => `${i.name} x ${i.qty}`).join(', ');
+  location.href = 'https://wa.me/923211124404?text=' + encodeURIComponent('New order request: ' + text);
+}
+function whatsAppOrder(id) {
+  const o = orders.find(x => x.id === id);
+  location.href = 'https://wa.me/923211124404?text=' + encodeURIComponent(`Order ${o.id} confirmed. ${o.customer}, ${money(o.total)}, ${o.payment}, ${o.type}`);
+}
+
+/* ── TRACK ── */
+function openTracker() { $('#trackDrawer').classList.add('open'); document.body.classList.add('drawer-open'); }
+function closeTracker() { $('#trackDrawer').classList.remove('open'); document.body.classList.remove('drawer-open'); }
+function trackOrder() {
+  const id = $('#trackId').value.trim().toUpperCase();
+  const o = orders.find(x => x.id.toUpperCase() === id);
+  if (!o) { $('#trackResult').innerHTML = '<p style="color:var(--muted)">No order found with that ID.</p>'; return; }
+  const statuses = ['Pending','Preparing','Out for delivery','Delivered'];
+  let idx = statuses.indexOf(o.status); if (idx < 0) idx = 0;
+  $('#trackResult').innerHTML = `<div class="card" style="padding:18px">
+    <b>${o.id} — ${o.status}</b>
+    <div class="order-status" style="margin:12px 0">${statuses.map((s,i) => `<span class="step ${i<=idx?'on':''}"></span>`).join('')}</div>
+    <p style="color:var(--muted);font-size:.88rem;margin:0">${o.type} · ${money(o.total)} · ${o.payment}</p>
+  </div>`;
+}
+
+/* ── RESERVATIONS ── */
+function seatsAvailable() {
+  const key = $('#rDate').value + ' ' + $('#rTime').value;
+  const used = reservations.filter(r => r.date + ' ' + r.time === key).reduce((a,r) => a + Number(r.seats), 0);
+  const left = Math.max(0, 48 - used);
+  $('#seatHint').textContent = key.trim() ? `${left} seats available for this slot.` : 'Pick a date and time to check availability.';
+  return left;
+}
+['rDate','rTime'].forEach(id => $('#'+id).addEventListener('change', seatsAvailable));
+
+$('#reservationForm').addEventListener('submit', e => {
+  e.preventDefault();
+  if (seatsAvailable() < Number($('#rSeats').value)) return toast('Not enough seats for this slot');
+  const res = {id:'R-'+String(reservations.length+1).padStart(4,'0'), name:$('#rName').value, phone:$('#rPhone').value, date:$('#rDate').value, time:$('#rTime').value, seats:$('#rSeats').value, area:$('#rArea').value, status:'Confirmed'};
+  reservations.unshift(res); save(); renderAdmin();
+  toast('Reservation confirmed!');
+  location.href = 'https://wa.me/923211124404?text=' + encodeURIComponent(`Reservation ${res.id}: ${res.name}, ${res.seats} seats, ${res.date} ${res.time}, ${res.area}`);
+});
+
+$('#contactForm').addEventListener('submit', e => { e.preventDefault(); toast('Message received! We will be in touch shortly.'); e.target.reset(); });
+
+/* ── ADMIN ── */
+async function adminLogin() {
+  try {
+    await api('/api/auth/login', {method:'POST', body:JSON.stringify({username:$('#adminUser').value, password:$('#adminPass').value})});
+    openAdmin();
+  } catch(e) {
+    if ($('#adminUser').value === 'admin' && $('#adminPass').value === 'a1admin') { openAdmin(); }
+    else toast('Wrong admin credentials');
+  }
+}
+function openAdmin() {
+  localStorage.a1admin = '1';
+  $('#loginBox').style.display = 'none';
+  $('#adminShell').classList.add('open');
+  renderAdmin(); toast('Admin logged in');
+}
+function adminLogout() { localStorage.removeItem('a1admin'); $('#loginBox').style.display='block'; $('#adminShell').classList.remove('open'); }
+function showAdmin(id) { $$('.admin-view').forEach(v=>v.classList.remove('active')); $('#'+id).classList.add('active'); }
+
+function renderAdmin() {
+  const sales = orders.reduce((a,o)=>a+o.total,0);
+  const today = new Date().toISOString().slice(0,10);
+  const daily = orders.filter(o=>o.date.slice(0,10)===today).reduce((a,o)=>a+o.total,0);
+  $('#analytics').innerHTML = `<div class="metric-grid grid">
+    <div class="metric card"><b>${orders.length}</b><small>Total Orders</small></div>
+    <div class="metric card"><b>${money(sales)}</b><small>Total Sales</small></div>
+    <div class="metric card"><b>${money(daily)}</b><small>Today's Sales</small></div>
+    <div class="metric card"><b>${reservations.length}</b><small>Reservations</small></div>
+  </div>`;
+  $('#orders').innerHTML = `<h3>Manage Orders</h3><table class="table card">
+    <tr><th>ID & Time</th><th>Customer</th><th>Items Ordered</th><th>Address / Type</th><th>Payment</th><th>Total</th><th>Status</th><th>Action</th></tr>
+    ${orders.map(o=>`<tr>
+      <td><b>${o.id}</b><br><small style="color:var(--muted)">${new Date(o.date).toLocaleDateString('en-PK',{day:'2-digit',month:'short'})} ${new Date(o.date).toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})}</small></td>
+      <td><b>${o.customer}</b><br><small style="color:var(--muted)">${o.phone}</small></td>
+      <td style="max-width:220px">${(o.items||[]).map(i=>`<div style="margin-bottom:4px">• ${i.name} <span style="color:var(--gold)">×${i.qty}</span> <small style="color:var(--muted)">${money(i.price*i.qty)}</small></div>`).join('')}</td>
+      <td><span style="color:var(--gold);font-size:.78rem;font-weight:700">${o.type}</span><br><small style="color:var(--muted)">${o.address||'—'}</small>${o.code?`<br><small style="color:var(--green)">Code: ${o.code}</small>`:''}</td>
+      <td><span style="color:var(--text)">${o.payment}</span></td>
+      <td><b style="color:var(--gold2)">${money(o.total)}</b>${o.discount>0?`<br><small style="color:var(--green)">-${money(o.discount)}</small>`:''}</td>
+      <td><span style="color:${o.status==='Delivered'?'var(--green)':o.status==='Pending'?'var(--gold)':'var(--text)'}">${o.status}</span></td>
+      <td><select onchange="updateOrder('${o.id}',this.value)" style="font-size:.82rem;padding:6px">
+        <option ${o.status==='Pending'?'selected':''}>Pending</option>
+        <option ${o.status==='Preparing'?'selected':''}>Preparing</option>
+        <option ${o.status==='Out for delivery'?'selected':''}>Out for delivery</option>
+        <option ${o.status==='Delivered'?'selected':''}>Delivered</option>
+      </select><br>
+      <button class="btn small" style="margin-top:6px;font-size:.75rem" onclick="whatsAppOrder('${o.id}')">📲 WA</button>
+      </td>
+    </tr>`).join('')}
+  </table>`;
+  $('#menuAdmin').innerHTML = `<h3>Manage Menu</h3><div class="form card" style="margin-bottom:16px"><div class="two"><input id="mName" placeholder="Item name"><input id="mPrice" placeholder="Price" type="number"></div><div class="two" style="margin-top:10px"><input id="mCat" placeholder="Category"><input id="mImg" placeholder="Image URL"></div><textarea id="mDesc" placeholder="Description" style="margin-top:10px;width:100%"></textarea><button class="btn small" onclick="addMenuAdmin()" style="margin-top:10px">Add Item</button></div><table class="table card"><tr><th>Item</th><th>Price</th><th>Category</th><th></th></tr>${menu.map(i=>`<tr><td>${i.name}</td><td>${money(i.price)}</td><td>${i.cat}</td><td><button class="btn small alt" onclick="deleteMenu(${i.id})">Delete</button></td></tr>`).join('')}</table>`;
+  $('#reservations').innerHTML = `<h3>Reservations</h3><table class="table card"><tr><th>ID</th><th>Name</th><th>Slot</th><th>Seats</th><th>Status</th></tr>${reservations.map(r=>`<tr><td>${r.id}</td><td>${r.name}<br><small style="color:var(--muted)">${r.phone}</small></td><td>${r.date} ${r.time}<br>${r.area}</td><td>${r.seats}</td><td>${r.status}</td></tr>`).join('')}</table>`;
+  $('#customers').innerHTML = `<h3>Customers</h3><table class="table card"><tr><th>Name</th><th>Phone</th><th>Last Order</th><th>Spend</th></tr>${customers.map(c=>`<tr><td>${c.name}</td><td>${c.phone}</td><td>${c.lastOrder}</td><td>${money(c.total)}</td></tr>`).join('')}</table>`;
+}
+
+function updateOrder(id, status) { const o=orders.find(x=>x.id===id); o.status=status; save(); renderAdmin(); toast('Order updated'); }
+function addMenuAdmin() {
+  const item = {id:Date.now(), name:$('#mName').value, price:Number($('#mPrice').value), cat:$('#mCat').value||'Special', img:$('#mImg').value||menuSeed[0].img, desc:$('#mDesc').value||'Fresh house special.'};
+  if (!item.name||!item.price) return toast('Name and price required');
+  menu.push(item); save(); renderFilters(); renderMenu(); renderAdmin(); toast('Menu item added');
+}
+function deleteMenu(id) { menu=menu.filter(i=>i.id!==id); save(); renderFilters(); renderMenu(); renderAdmin(); }
+
+/* ── CHAT ── */
+function toggleChat() { $('#chatBox').classList.toggle('open'); }
+function chatSend() {
+  const text = $('#chatText').value.trim(); if (!text) return;
+  $('#chatLog').innerHTML += `<div class="msg me">${text}</div>`;
+  let ans = 'You can order from the menu, reserve a table, or call +92 321 1124404.';
+  const t = text.toLowerCase();
+  if (t.includes('time')||t.includes('hour')) ans = 'We are open Mon–Thu 12 PM–1 AM, Fri 1:30 PM–2 AM, Sat–Sun 11 AM–2 AM.';
+  if (t.includes('track')||t.includes('order')) ans = 'Open Track Order from the cart and enter your order ID (e.g. A1-0001).';
+  if (t.includes('delivery')) ans = 'Delivery available in Karachi. Fee is PKR 150. Free pickup also available.';
+  if (t.includes('reserve')||t.includes('book')) ans = 'Use the Reservations section to pick your date, time, seats, and area.';
+  if (t.includes('deal')||t.includes('discount')) ans = 'Use A1WELCOME for 8% off, BBQ10 for 10% off BBQ, FAMILY15 for 15% off orders above PKR 3,000.';
+  setTimeout(() => { $('#chatLog').innerHTML += `<div class="msg">${ans}</div>`; $('#chatLog').scrollTop = 9999; }, 260);
+  $('#chatText').value = '';
+}
+$('#chatText').addEventListener('keydown', e => { if (e.key === 'Enter') chatSend(); });
+
+/* ── GALLERY ── */
+function renderGallery() {
+  $('#galleryGrid').innerHTML = gallery.map(g =>
+    `<div class="gallery-item anim" style="background-image:url('${g.url}')"><span>${g.label}</span></div>`
+  ).join('');
+}
+
+/* ── NAV TOGGLE ── */
+$('#navToggle').onclick = () => $('#navLinks').classList.toggle('open');
+$('#oType').addEventListener('change', renderCart);
+
+/* ── BOOT ── */
+function adminAllowed() { return new URLSearchParams(location.search).get('admin') === '1'; }
+
+async function boot() {
+  await loadBackend();
+  buildMarquee();
+  renderFilters();
+  renderMenu();
+  renderCart();
+  renderGallery();
+  if (adminAllowed()) {
+    $('#admin').hidden = false;
+    if (localStorage.a1admin === '1') {
+      $('#loginBox').style.display = 'none';
+      $('#adminShell').classList.add('open');
+    }
+    setTimeout(() => $('#admin').scrollIntoView({behavior:'smooth', block:'start'}), 150);
+  }
+  renderAdmin();
+}
+boot();
+
+/* ── ANIMATIONS ── */
+window.addEventListener('load', () => {
+  if (window.gsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero-content > *', {
+      opacity: 0, y: 30, duration: .85,
+      stagger: .1, ease: 'power3.out', delay: .1
+    });
+    gsap.utils.toArray('.anim').forEach(el => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%' },
+        opacity: 0, y: 32, duration: .75, ease: 'power3.out'
+      });
+    });
+    gsap.utils.toArray('.feature').forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 90%' },
+        opacity: 0, y: 24, duration: .6, delay: i * .08, ease: 'power3.out'
+      });
+    });
+    gsap.utils.toArray('.deal').forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 90%' },
+        opacity: 0, y: 24, duration: .6, delay: i * .1, ease: 'power3.out'
+      });
+    });
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "name": "Peshawari Chapli Kabab",
+      "cat": "Kabab",
+      "price": 360,
+      "img": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+      "desc": "Hand-pressed beef kabab with tomatoes, coriander, and house spices."
+    },
+    {
+      "id": 2,
+      "name": "Beef BBQ Platter",
+      "cat": "BBQ",
+      "price": 1450,
+      "img": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80",
+      "desc": "Seekh kabab, boti, tikka, chutney, raita, and naan."
+    },
+    {
+      "id": 3,
+      "name": "Mutton Karahi",
+      "cat": "Karahi",
+      "price": 2450,
+      "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=900&q=80",
+      "desc": "Tomato, green chilli, ginger, and slow-cooked mutton."
+    }
+  ],
+  "orders": [
+    {
+      "id": "A1-0001",
+      "items": [
+        {
+          "id": 2,
+          "name": "Beef BBQ Platter",
+          "cat": "BBQ",
+          "price": 1450,
+          "img": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80",
+          "desc": "Seekh kabab, boti, tikka, chutney, raita, and naan.",
+          "qty": 1
+        }
+      ],
+      "date": "2026-06-06T07:38:36.389Z",
+      "customer": "Muhammad Ahmed",
+      "phone": "087654324567",
+      "type": "Delivery",
+      "address": "12345678uytrewqert",
+      "payment": "COD",
+      "code": "",
+      "subtotal": 1450,
+      "tax": 72.5,
+      "delivery": 150,
+      "discount": 0,
+      "total": 1672.5,
+      "status": "Pending",
+      "points": 16
+    }
+  ],
+  "reservations": [],
+  "customers": [
+    {
+      "name": "Muhammad Ahmed",
+      "phone": "087654324567",
+      "lastOrder": "A1-0001",
+      "total": 1672.5
+    }
+  ],
+  "offers": [
+    {
+      "code": "A1WELCOME",
+      "type": "percent",
+      "value": 8,
+      "min": 0
+    },
+    {
+      "code": "BBQ10",
+      "type": "category",
+      "value": 10,
+      "category": "BBQ"
+    },
+    {
+      "code": "FAMILY15",
+      "type": "percent",
+      "value": 15,
+      "min": 3000
+    }
+  ],
+  "admin": {
+    "username": "admin",
+    "passwordHash": "c7a6898a331ebbbd443a54adef1fa0cdc16761ec5263c9ac1e7a71cbc839c111"
+  }
+}
